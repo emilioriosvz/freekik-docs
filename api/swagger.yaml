@@ -1,0 +1,1537 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: freekik
+  description: 'Api docs freekik'
+host: localhost:3000
+basePath: /api
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /auth/login:
+    post:
+      description: 'Login the user'
+      summary: login
+      tags:
+      - auth
+      operationId: AuthLoginPost
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/LoginRequest'
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/Login'
+          examples:
+            application/json:
+              success: true
+              response: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YWI1MjIzMmQyOGJlNGNhN2QzMGEzMjQiLCJpYXQiOjE1MjE5MDUwMzd9.OQE7yfzZCcnt0vD5J99kkNlRtONmMXNe-v5993NgvHQ
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /auth/login
+          headers:
+            Content-Type: application/json
+          body: '{"username":"emilioriosvz"}'
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers:
+            Access-Control-Allow-Origin: '*'
+            Connection: keep-alive
+            Content-Length: 183
+            Content-Type: application/json; charset=utf-8
+            Date: Sat, 24 Mar 2018 15:23:57 GMT
+            ETag: W/"b7-FJocJds2M2RngMLWMKZlljr/FYM"
+            X-Powered-By: Express
+          body: '{"success":true,"response":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YWI1MjIzMmQyOGJlNGNhN2QzMGEzMjQiLCJpYXQiOjE1MjE5MDUwMzd9.OQE7yfzZCcnt0vD5J99kkNlRtONmMXNe-v5993NgvHQ"}'
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: login
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /post:
+    get:
+      description: 'TODO: Add Description'
+      summary: get my posts
+      tags:
+      - posts
+      operationId: PostGet
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        type: string
+        description: ''
+      - name: skip
+        in: query
+        required: false
+        type: string
+        description: ''
+      - name: x-access-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/GetMyPosts'
+          examples:
+            application/json:
+              success: true
+              response:
+              - deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                _id: 5ab53032633d761b496bc34c
+                title: Javascript, the good parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-23T16:49:54.4800000Z
+                updatedDate: 2018-03-24T15:22:20.7430000Z
+                __v: 0
+              - deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                _id: 5ab537c4d8b4081d068088dd
+                title: Javascript, the goods parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-23T17:22:12.1840000Z
+                updatedDate: 2018-03-23T17:22:12.1840000Z
+                __v: 0
+              - deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                _id: 5ab537e2fa50d61d2ae6917e
+                title: Javascript, the goods parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-23T17:22:42.9740000Z
+                updatedDate: 2018-03-23T17:22:42.9740000Z
+                __v: 0
+              - deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                - 5ab52232d28be4ca7d30a325
+                _id: 5ab538d7fa50d61d2ae6917f
+                title: Javascript, the goods parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-23T17:26:47.0150000Z
+                updatedDate: 2018-03-23T17:26:47.0150000Z
+                __v: 0
+              - deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                - 5ab52232d28be4ca7d30a325
+                _id: 5ab6516e1ab22944e026ba54
+                title: Javascript, the goods parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-24T13:23:58.0560000Z
+                updatedDate: 2018-03-24T13:23:58.0560000Z
+                __v: 0
+              - deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                - 5ab52232d28be4ca7d30a325
+                _id: 5ab651f8cef4b94539fa0508
+                title: Javascript, the goods parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-24T13:26:16.4700000Z
+                updatedDate: 2018-03-24T13:26:16.4700000Z
+                __v: 0
+              - deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                - 5ab52232d28be4ca7d30a325
+                _id: 5ab65242b76201454a6c9289
+                title: Javascript, the bad parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-24T13:27:30.3940000Z
+                updatedDate: 2018-03-24T13:27:30.3940000Z
+                __v: 0
+              - deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                _id: 5ab66c4d03f5314f4123906e
+                title: Javascript, the good parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-24T15:18:37.8570000Z
+                updatedDate: 2018-03-24T15:18:37.8570000Z
+                __v: 0
+              - deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                _id: 5ab66d3c03f5314f4123906f
+                title: Javascript, the good parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-24T15:22:36.4780000Z
+                updatedDate: 2018-03-24T15:22:36.4780000Z
+                __v: 0
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /post?limit={{limit}}&skip={{skip}}
+          headers:
+            x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YWI1MjIzMmQyOGJlNGNhN2QzMGEzMjQiLCJpYXQiOjE1MjE4OTU2Mjh9.GOEJXmpIA08J3vhIly2GOsqZsfEXOcMC3VZPO3Fdg_U
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers:
+            Access-Control-Allow-Origin: '*'
+            Connection: keep-alive
+            Content-Length: 3516
+            Content-Type: application/json; charset=utf-8
+            Date: Sat, 24 Mar 2018 15:23:46 GMT
+            ETag: W/"dbc-c8+TnxhS7qS5m/cj5kCzG9k0UVw"
+            X-Powered-By: Express
+          body: '{"success":true,"response":[{"deactivated":false,"taggedUsers":["5ab52232d28be4ca7d30a324"],"_id":"5ab53032633d761b496bc34c","title":"Javascript, the good parts","body":"Lorem Ipsum Dolor Sit Amet","picture":"https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg","creator":"5ab52232d28be4ca7d30a324","createdDate":"2018-03-23T16:49:54.48Z","updatedDate":"2018-03-24T15:22:20.743Z","__v":0},{"deactivated":false,"taggedUsers":["5ab52232d28be4ca7d30a324"],"_id":"5ab537c4d8b4081d068088dd","title":"Javascript, the goods parts","body":"Lorem Ipsum Dolor Sit Amet","picture":"https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg","creator":"5ab52232d28be4ca7d30a324","createdDate":"2018-03-23T17:22:12.184Z","updatedDate":"2018-03-23T17:22:12.184Z","__v":0},{"deactivated":false,"taggedUsers":["5ab52232d28be4ca7d30a324"],"_id":"5ab537e2fa50d61d2ae6917e","title":"Javascript, the goods parts","body":"Lorem Ipsum Dolor Sit Amet","picture":"https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg","creator":"5ab52232d28be4ca7d30a324","createdDate":"2018-03-23T17:22:42.974Z","updatedDate":"2018-03-23T17:22:42.974Z","__v":0},{"deactivated":false,"taggedUsers":["5ab52232d28be4ca7d30a324","5ab52232d28be4ca7d30a325"],"_id":"5ab538d7fa50d61d2ae6917f","title":"Javascript, the goods parts","body":"Lorem Ipsum Dolor Sit Amet","picture":"https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg","creator":"5ab52232d28be4ca7d30a324","createdDate":"2018-03-23T17:26:47.015Z","updatedDate":"2018-03-23T17:26:47.015Z","__v":0},{"deactivated":false,"taggedUsers":["5ab52232d28be4ca7d30a324","5ab52232d28be4ca7d30a325"],"_id":"5ab6516e1ab22944e026ba54","title":"Javascript, the goods parts","body":"Lorem Ipsum Dolor Sit Amet","picture":"https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg","creator":"5ab52232d28be4ca7d30a324","createdDate":"2018-03-24T13:23:58.056Z","updatedDate":"2018-03-24T13:23:58.056Z","__v":0},{"deactivated":false,"taggedUsers":["5ab52232d28be4ca7d30a324","5ab52232d28be4ca7d30a325"],"_id":"5ab651f8cef4b94539fa0508","title":"Javascript, the goods parts","body":"Lorem Ipsum Dolor Sit Amet","picture":"https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg","creator":"5ab52232d28be4ca7d30a324","createdDate":"2018-03-24T13:26:16.47Z","updatedDate":"2018-03-24T13:26:16.47Z","__v":0},{"deactivated":false,"taggedUsers":["5ab52232d28be4ca7d30a324","5ab52232d28be4ca7d30a325"],"_id":"5ab65242b76201454a6c9289","title":"Javascript, the bad parts","body":"Lorem Ipsum Dolor Sit Amet","picture":"https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg","creator":"5ab52232d28be4ca7d30a324","createdDate":"2018-03-24T13:27:30.394Z","updatedDate":"2018-03-24T13:27:30.394Z","__v":0},{"deactivated":false,"taggedUsers":["5ab52232d28be4ca7d30a324"],"_id":"5ab66c4d03f5314f4123906e","title":"Javascript, the good parts","body":"Lorem Ipsum Dolor Sit Amet","picture":"https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg","creator":"5ab52232d28be4ca7d30a324","createdDate":"2018-03-24T15:18:37.857Z","updatedDate":"2018-03-24T15:18:37.857Z","__v":0},{"deactivated":false,"taggedUsers":["5ab52232d28be4ca7d30a324"],"_id":"5ab66d3c03f5314f4123906f","title":"Javascript, the good parts","body":"Lorem Ipsum Dolor Sit Amet","picture":"https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg","creator":"5ab52232d28be4ca7d30a324","createdDate":"2018-03-24T15:22:36.478Z","updatedDate":"2018-03-24T15:22:36.478Z","__v":0}]}'
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: get my posts
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: create post
+      tags:
+      - posts
+      operationId: PostPost
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/CreatePostrequest'
+      - name: x-access-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/CreatePost'
+          examples:
+            application/json:
+              success: true
+              response:
+                deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                _id: 5ab66d3c03f5314f4123906f
+                title: Javascript, the good parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-24T15:22:36.4780000Z
+                updatedDate: 2018-03-24T15:22:36.4780000Z
+                __v: 0
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /post
+          headers:
+            Content-Type: application/json
+            x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YWI1MjIzMmQyOGJlNGNhN2QzMGEzMjQiLCJpYXQiOjE1MjE4OTU2Mjh9.GOEJXmpIA08J3vhIly2GOsqZsfEXOcMC3VZPO3Fdg_U
+          body: '{"title":"Javascript, the good parts","body":"Lorem Ipsum Dolor Sit Amet","deactivated":false,"picture":"https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg","taggedUsers":["5ab52232d28be4ca7d30a324"]}'
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers:
+            Access-Control-Allow-Origin: '*'
+            Connection: keep-alive
+            Content-Length: 402
+            Content-Type: application/json; charset=utf-8
+            Date: Sat, 24 Mar 2018 15:22:36 GMT
+            ETag: W/"192-pb/WuRhK+MOGq31AfzUODZxvOtc"
+            X-Powered-By: Express
+          body: '{"success":true,"response":{"deactivated":false,"taggedUsers":["5ab52232d28be4ca7d30a324"],"_id":"5ab66d3c03f5314f4123906f","title":"Javascript, the good parts","body":"Lorem Ipsum Dolor Sit Amet","picture":"https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg","creator":"5ab52232d28be4ca7d30a324","createdDate":"2018-03-24T15:22:36.478Z","updatedDate":"2018-03-24T15:22:36.478Z","__v":0}}'
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: create post
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /post/{postId}:
+    get:
+      description: 'TODO: Add Description'
+      summary: get post by id
+      tags:
+      - posts
+      operationId: PostByPostIdGet
+      produces:
+      - application/json
+      parameters:
+      - name: x-access-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: postId
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/GetPostById'
+          examples:
+            application/json:
+              success: true
+              response:
+                deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                _id: 5ab53032633d761b496bc34c
+                title: Javascript, the good parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-23T16:49:54.4800000Z
+                updatedDate: 2018-03-24T15:22:20.7430000Z
+                __v: 0
+      security: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    put:
+      description: 'Update the post with new values'
+      summary: update post
+      tags:
+      - posts
+      operationId: PostByPostIdPut
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/UpdatePostrequest'
+      - name: x-access-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: postId
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/UpdatePost'
+          examples:
+            application/json:
+              success: true
+              response:
+                deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                _id: 5ab53032633d761b496bc34c
+                title: Javascript, the good parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-23T16:49:54.4800000Z
+                updatedDate: 2018-03-24T15:22:20.7430000Z
+                __v: 0
+      security: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /post/{postId}/taggedUser:
+    get:
+      description: 'Get posts by taggedUser'
+      summary: get post by taggedUser
+      tags:
+      - posts
+      operationId: PostTaggedUserByPostIdGet
+      produces:
+      - application/json
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        type: string
+        description: ''
+      - name: skip
+        in: query
+        required: false
+        type: string
+        description: ''
+      - name: postId
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/GetPostByTaggeduser'
+          examples:
+            application/json:
+              success: true
+              response:
+              - deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                _id: 5ab53032633d761b496bc34c
+                title: Javascript, the good parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-23T16:49:54.4800000Z
+                updatedDate: 2018-03-24T13:19:56.1260000Z
+                __v: 0
+              - deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                _id: 5ab537c4d8b4081d068088dd
+                title: Javascript, the goods parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-23T17:22:12.1840000Z
+                updatedDate: 2018-03-23T17:22:12.1840000Z
+                __v: 0
+              - deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                _id: 5ab537e2fa50d61d2ae6917e
+                title: Javascript, the goods parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-23T17:22:42.9740000Z
+                updatedDate: 2018-03-23T17:22:42.9740000Z
+                __v: 0
+              - deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                - 5ab52232d28be4ca7d30a325
+                _id: 5ab538d7fa50d61d2ae6917f
+                title: Javascript, the goods parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-23T17:26:47.0150000Z
+                updatedDate: 2018-03-23T17:26:47.0150000Z
+                __v: 0
+              - deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                - 5ab52232d28be4ca7d30a325
+                _id: 5ab6516e1ab22944e026ba54
+                title: Javascript, the goods parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-24T13:23:58.0560000Z
+                updatedDate: 2018-03-24T13:23:58.0560000Z
+                __v: 0
+      security: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /post/{postId}/deactivate:
+    put:
+      description: 'Deactivate post'
+      summary: deactivate post
+      tags:
+      - posts
+      operationId: PostDeactivateByPostIdPut
+      produces:
+      - application/json
+      parameters:
+      - name: x-access-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: postId
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/DeactivatePost'
+          examples:
+            application/json:
+              success: true
+              response:
+                deactivated: true
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                _id: 5ab53032633d761b496bc34c
+                title: Javascript, the good parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-23T16:49:54.4800000Z
+                updatedDate: 2018-03-24T15:22:16.8060000Z
+                __v: 0
+      security: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /post/{postId}/activate:
+    put:
+      description: 'Activate post'
+      summary: activate post
+      tags:
+      - posts
+      operationId: PostActivateByPostIdPut
+      produces:
+      - application/json
+      parameters:
+      - name: x-access-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: postId
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/ActivatePost'
+          examples:
+            application/json:
+              success: true
+              response:
+                deactivated: false
+                taggedUsers:
+                - 5ab52232d28be4ca7d30a324
+                _id: 5ab53032633d761b496bc34c
+                title: Javascript, the good parts
+                body: Lorem Ipsum Dolor Sit Amet
+                picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+                creator: 5ab52232d28be4ca7d30a324
+                createdDate: 2018-03-23T16:49:54.4800000Z
+                updatedDate: 2018-03-24T15:22:10.1200000Z
+                __v: 0
+      security: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /user:
+    get:
+      description: 'Get user'
+      summary: get user
+      tags:
+      - users
+      operationId: UserGet
+      produces:
+      - application/json
+      parameters:
+      - name: username
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: location
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: language
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+          schema:
+            $ref: '#/definitions/GetUser'
+          examples:
+            application/json:
+              success: true
+              response:
+              - login: emilioriosvz
+                id: 5558664
+                avatar_url: https://avatars0.githubusercontent.com/u/5558664?v=4
+                gravatar_id: ''
+                url: https://api.github.com/users/emilioriosvz
+                html_url: https://github.com/emilioriosvz
+                followers_url: https://api.github.com/users/emilioriosvz/followers
+                following_url: https://api.github.com/users/emilioriosvz/following{/other_user}
+                gists_url: https://api.github.com/users/emilioriosvz/gists{/gist_id}
+                starred_url: https://api.github.com/users/emilioriosvz/starred{/owner}{/repo}
+                subscriptions_url: https://api.github.com/users/emilioriosvz/subscriptions
+                organizations_url: https://api.github.com/users/emilioriosvz/orgs
+                repos_url: https://api.github.com/users/emilioriosvz/repos
+                events_url: https://api.github.com/users/emilioriosvz/events{/privacy}
+                received_events_url: https://api.github.com/users/emilioriosvz/received_events
+                type: User
+                site_admin: false
+                score: 31.932673000000001
+      security: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /user?username={{username}}&location={{location}}&language={{language}}
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: RAW
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers:
+            Connection: keep-alive
+            Content-Length: 969
+            Content-Type: application/json; charset=utf-8
+            Date: Sat, 24 Mar 2018 14:38:25 GMT
+            ETag: W/"3c9-yLr9Jkm4GNAZHk0h/y4/koxZLbg"
+            X-Powered-By: Express
+          body: '{"success":true,"response":[{"login":"emilioriosvz","id":5558664,"avatar_url":"https://avatars0.githubusercontent.com/u/5558664?v=4","gravatar_id":"","url":"https://api.github.com/users/emilioriosvz","html_url":"https://github.com/emilioriosvz","followers_url":"https://api.github.com/users/emilioriosvz/followers","following_url":"https://api.github.com/users/emilioriosvz/following{/other_user}","gists_url":"https://api.github.com/users/emilioriosvz/gists{/gist_id}","starred_url":"https://api.github.com/users/emilioriosvz/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/emilioriosvz/subscriptions","organizations_url":"https://api.github.com/users/emilioriosvz/orgs","repos_url":"https://api.github.com/users/emilioriosvz/repos","events_url":"https://api.github.com/users/emilioriosvz/events{/privacy}","received_events_url":"https://api.github.com/users/emilioriosvz/received_events","type":"User","site_admin":false,"score":31.932673}]}'
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: get user
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+definitions:
+  LoginRequest:
+    title: loginRequest
+    example:
+      username: emilioriosvz
+    type: object
+    properties:
+      username:
+        description: ''
+        example: emilioriosvz
+        type: string
+    required:
+    - username
+  Login:
+    title: login
+    example:
+      success: true
+      response: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YWI1MjIzMmQyOGJlNGNhN2QzMGEzMjQiLCJpYXQiOjE1MjE5MDUwMzd9.OQE7yfzZCcnt0vD5J99kkNlRtONmMXNe-v5993NgvHQ
+    type: object
+    properties:
+      success:
+        description: ''
+        example: true
+        type: boolean
+      response:
+        description: ''
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YWI1MjIzMmQyOGJlNGNhN2QzMGEzMjQiLCJpYXQiOjE1MjE5MDUwMzd9.OQE7yfzZCcnt0vD5J99kkNlRtONmMXNe-v5993NgvHQ
+        type: string
+    required:
+    - success
+    - response
+  GetMyPosts:
+    title: get my posts
+    example:
+      success: true
+      response:
+      - deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        _id: 5ab53032633d761b496bc34c
+        title: Javascript, the good parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-23T16:49:54.4800000Z
+        updatedDate: 2018-03-24T15:22:20.7430000Z
+        __v: 0
+      - deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        _id: 5ab537c4d8b4081d068088dd
+        title: Javascript, the goods parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-23T17:22:12.1840000Z
+        updatedDate: 2018-03-23T17:22:12.1840000Z
+        __v: 0
+      - deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        _id: 5ab537e2fa50d61d2ae6917e
+        title: Javascript, the goods parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-23T17:22:42.9740000Z
+        updatedDate: 2018-03-23T17:22:42.9740000Z
+        __v: 0
+      - deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        - 5ab52232d28be4ca7d30a325
+        _id: 5ab538d7fa50d61d2ae6917f
+        title: Javascript, the goods parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-23T17:26:47.0150000Z
+        updatedDate: 2018-03-23T17:26:47.0150000Z
+        __v: 0
+      - deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        - 5ab52232d28be4ca7d30a325
+        _id: 5ab6516e1ab22944e026ba54
+        title: Javascript, the goods parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-24T13:23:58.0560000Z
+        updatedDate: 2018-03-24T13:23:58.0560000Z
+        __v: 0
+      - deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        - 5ab52232d28be4ca7d30a325
+        _id: 5ab651f8cef4b94539fa0508
+        title: Javascript, the goods parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-24T13:26:16.4700000Z
+        updatedDate: 2018-03-24T13:26:16.4700000Z
+        __v: 0
+      - deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        - 5ab52232d28be4ca7d30a325
+        _id: 5ab65242b76201454a6c9289
+        title: Javascript, the bad parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-24T13:27:30.3940000Z
+        updatedDate: 2018-03-24T13:27:30.3940000Z
+        __v: 0
+      - deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        _id: 5ab66c4d03f5314f4123906e
+        title: Javascript, the good parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-24T15:18:37.8570000Z
+        updatedDate: 2018-03-24T15:18:37.8570000Z
+        __v: 0
+      - deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        _id: 5ab66d3c03f5314f4123906f
+        title: Javascript, the good parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-24T15:22:36.4780000Z
+        updatedDate: 2018-03-24T15:22:36.4780000Z
+        __v: 0
+    type: object
+    properties:
+      success:
+        description: ''
+        example: true
+        type: boolean
+      response:
+        description: ''
+        example:
+        - deactivated: false
+          taggedUsers:
+          - 5ab52232d28be4ca7d30a324
+          _id: 5ab53032633d761b496bc34c
+          title: Javascript, the good parts
+          body: Lorem Ipsum Dolor Sit Amet
+          picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+          creator: 5ab52232d28be4ca7d30a324
+          createdDate: 2018-03-23T16:49:54.4800000Z
+          updatedDate: 2018-03-24T15:22:20.7430000Z
+          __v: 0
+        - deactivated: false
+          taggedUsers:
+          - 5ab52232d28be4ca7d30a324
+          _id: 5ab537c4d8b4081d068088dd
+          title: Javascript, the goods parts
+          body: Lorem Ipsum Dolor Sit Amet
+          picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+          creator: 5ab52232d28be4ca7d30a324
+          createdDate: 2018-03-23T17:22:12.1840000Z
+          updatedDate: 2018-03-23T17:22:12.1840000Z
+          __v: 0
+        - deactivated: false
+          taggedUsers:
+          - 5ab52232d28be4ca7d30a324
+          _id: 5ab537e2fa50d61d2ae6917e
+          title: Javascript, the goods parts
+          body: Lorem Ipsum Dolor Sit Amet
+          picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+          creator: 5ab52232d28be4ca7d30a324
+          createdDate: 2018-03-23T17:22:42.9740000Z
+          updatedDate: 2018-03-23T17:22:42.9740000Z
+          __v: 0
+        - deactivated: false
+          taggedUsers:
+          - 5ab52232d28be4ca7d30a324
+          - 5ab52232d28be4ca7d30a325
+          _id: 5ab538d7fa50d61d2ae6917f
+          title: Javascript, the goods parts
+          body: Lorem Ipsum Dolor Sit Amet
+          picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+          creator: 5ab52232d28be4ca7d30a324
+          createdDate: 2018-03-23T17:26:47.0150000Z
+          updatedDate: 2018-03-23T17:26:47.0150000Z
+          __v: 0
+        - deactivated: false
+          taggedUsers:
+          - 5ab52232d28be4ca7d30a324
+          - 5ab52232d28be4ca7d30a325
+          _id: 5ab6516e1ab22944e026ba54
+          title: Javascript, the goods parts
+          body: Lorem Ipsum Dolor Sit Amet
+          picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+          creator: 5ab52232d28be4ca7d30a324
+          createdDate: 2018-03-24T13:23:58.0560000Z
+          updatedDate: 2018-03-24T13:23:58.0560000Z
+          __v: 0
+        - deactivated: false
+          taggedUsers:
+          - 5ab52232d28be4ca7d30a324
+          - 5ab52232d28be4ca7d30a325
+          _id: 5ab651f8cef4b94539fa0508
+          title: Javascript, the goods parts
+          body: Lorem Ipsum Dolor Sit Amet
+          picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+          creator: 5ab52232d28be4ca7d30a324
+          createdDate: 2018-03-24T13:26:16.4700000Z
+          updatedDate: 2018-03-24T13:26:16.4700000Z
+          __v: 0
+        - deactivated: false
+          taggedUsers:
+          - 5ab52232d28be4ca7d30a324
+          - 5ab52232d28be4ca7d30a325
+          _id: 5ab65242b76201454a6c9289
+          title: Javascript, the bad parts
+          body: Lorem Ipsum Dolor Sit Amet
+          picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+          creator: 5ab52232d28be4ca7d30a324
+          createdDate: 2018-03-24T13:27:30.3940000Z
+          updatedDate: 2018-03-24T13:27:30.3940000Z
+          __v: 0
+        - deactivated: false
+          taggedUsers:
+          - 5ab52232d28be4ca7d30a324
+          _id: 5ab66c4d03f5314f4123906e
+          title: Javascript, the good parts
+          body: Lorem Ipsum Dolor Sit Amet
+          picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+          creator: 5ab52232d28be4ca7d30a324
+          createdDate: 2018-03-24T15:18:37.8570000Z
+          updatedDate: 2018-03-24T15:18:37.8570000Z
+          __v: 0
+        - deactivated: false
+          taggedUsers:
+          - 5ab52232d28be4ca7d30a324
+          _id: 5ab66d3c03f5314f4123906f
+          title: Javascript, the good parts
+          body: Lorem Ipsum Dolor Sit Amet
+          picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+          creator: 5ab52232d28be4ca7d30a324
+          createdDate: 2018-03-24T15:22:36.4780000Z
+          updatedDate: 2018-03-24T15:22:36.4780000Z
+          __v: 0
+        type: array
+        items:
+          $ref: '#/definitions/Response'
+    required:
+    - success
+    - response
+  Response:
+    title: Response
+    example:
+      deactivated: false
+      taggedUsers:
+      - 5ab52232d28be4ca7d30a324
+      _id: 5ab53032633d761b496bc34c
+      title: Javascript, the good parts
+      body: Lorem Ipsum Dolor Sit Amet
+      picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+      creator: 5ab52232d28be4ca7d30a324
+      createdDate: 2018-03-23T16:49:54.4800000Z
+      updatedDate: 2018-03-24T15:22:20.7430000Z
+      __v: 0
+    type: object
+    properties:
+      deactivated:
+        description: ''
+        example: false
+        type: boolean
+      taggedUsers:
+        description: ''
+        example:
+        - 5ab52232d28be4ca7d30a324
+        type: array
+        items:
+          type: string
+      _id:
+        description: ''
+        example: 5ab53032633d761b496bc34c
+        type: string
+      title:
+        description: ''
+        example: Javascript, the good parts
+        type: string
+      body:
+        description: ''
+        example: Lorem Ipsum Dolor Sit Amet
+        type: string
+      picture:
+        description: ''
+        example: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        type: string
+      creator:
+        description: ''
+        example: 5ab52232d28be4ca7d30a324
+        type: string
+      createdDate:
+        description: ''
+        example: 3/23/2018 4:49:54 PM
+        type: string
+      updatedDate:
+        description: ''
+        example: 3/24/2018 3:22:20 PM
+        type: string
+      __v:
+        description: ''
+        example: 0
+        type: integer
+        format: int32
+    required:
+    - deactivated
+    - taggedUsers
+    - _id
+    - title
+    - body
+    - picture
+    - creator
+    - createdDate
+    - updatedDate
+    - __v
+  GetPostById:
+    title: get post by id
+    example:
+      success: true
+      response:
+        deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        _id: 5ab53032633d761b496bc34c
+        title: Javascript, the good parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-23T16:49:54.4800000Z
+        updatedDate: 2018-03-24T15:22:20.7430000Z
+        __v: 0
+    type: object
+    properties:
+      success:
+        description: ''
+        example: true
+        type: boolean
+      response:
+        $ref: '#/definitions/Response'
+    required:
+    - success
+    - response
+  GetPostByTaggeduser:
+    title: get post by taggedUser
+    example:
+      success: true
+      response:
+      - deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        _id: 5ab53032633d761b496bc34c
+        title: Javascript, the good parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-23T16:49:54.4800000Z
+        updatedDate: 2018-03-24T13:19:56.1260000Z
+        __v: 0
+      - deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        _id: 5ab537c4d8b4081d068088dd
+        title: Javascript, the goods parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-23T17:22:12.1840000Z
+        updatedDate: 2018-03-23T17:22:12.1840000Z
+        __v: 0
+      - deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        _id: 5ab537e2fa50d61d2ae6917e
+        title: Javascript, the goods parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-23T17:22:42.9740000Z
+        updatedDate: 2018-03-23T17:22:42.9740000Z
+        __v: 0
+      - deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        - 5ab52232d28be4ca7d30a325
+        _id: 5ab538d7fa50d61d2ae6917f
+        title: Javascript, the goods parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-23T17:26:47.0150000Z
+        updatedDate: 2018-03-23T17:26:47.0150000Z
+        __v: 0
+      - deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        - 5ab52232d28be4ca7d30a325
+        _id: 5ab6516e1ab22944e026ba54
+        title: Javascript, the goods parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-24T13:23:58.0560000Z
+        updatedDate: 2018-03-24T13:23:58.0560000Z
+        __v: 0
+    type: object
+    properties:
+      success:
+        description: ''
+        example: true
+        type: boolean
+      response:
+        description: ''
+        example:
+        - deactivated: false
+          taggedUsers:
+          - 5ab52232d28be4ca7d30a324
+          _id: 5ab53032633d761b496bc34c
+          title: Javascript, the good parts
+          body: Lorem Ipsum Dolor Sit Amet
+          picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+          creator: 5ab52232d28be4ca7d30a324
+          createdDate: 2018-03-23T16:49:54.4800000Z
+          updatedDate: 2018-03-24T13:19:56.1260000Z
+          __v: 0
+        - deactivated: false
+          taggedUsers:
+          - 5ab52232d28be4ca7d30a324
+          _id: 5ab537c4d8b4081d068088dd
+          title: Javascript, the goods parts
+          body: Lorem Ipsum Dolor Sit Amet
+          picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+          creator: 5ab52232d28be4ca7d30a324
+          createdDate: 2018-03-23T17:22:12.1840000Z
+          updatedDate: 2018-03-23T17:22:12.1840000Z
+          __v: 0
+        - deactivated: false
+          taggedUsers:
+          - 5ab52232d28be4ca7d30a324
+          _id: 5ab537e2fa50d61d2ae6917e
+          title: Javascript, the goods parts
+          body: Lorem Ipsum Dolor Sit Amet
+          picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+          creator: 5ab52232d28be4ca7d30a324
+          createdDate: 2018-03-23T17:22:42.9740000Z
+          updatedDate: 2018-03-23T17:22:42.9740000Z
+          __v: 0
+        - deactivated: false
+          taggedUsers:
+          - 5ab52232d28be4ca7d30a324
+          - 5ab52232d28be4ca7d30a325
+          _id: 5ab538d7fa50d61d2ae6917f
+          title: Javascript, the goods parts
+          body: Lorem Ipsum Dolor Sit Amet
+          picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+          creator: 5ab52232d28be4ca7d30a324
+          createdDate: 2018-03-23T17:26:47.0150000Z
+          updatedDate: 2018-03-23T17:26:47.0150000Z
+          __v: 0
+        - deactivated: false
+          taggedUsers:
+          - 5ab52232d28be4ca7d30a324
+          - 5ab52232d28be4ca7d30a325
+          _id: 5ab6516e1ab22944e026ba54
+          title: Javascript, the goods parts
+          body: Lorem Ipsum Dolor Sit Amet
+          picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+          creator: 5ab52232d28be4ca7d30a324
+          createdDate: 2018-03-24T13:23:58.0560000Z
+          updatedDate: 2018-03-24T13:23:58.0560000Z
+          __v: 0
+        type: array
+        items:
+          $ref: '#/definitions/Response'
+    required:
+    - success
+    - response
+  CreatePostrequest:
+    title: create postRequest
+    example:
+      title: Javascript, the good parts
+      body: Lorem Ipsum Dolor Sit Amet
+      deactivated: false
+      picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+      taggedUsers:
+      - 5ab52232d28be4ca7d30a324
+    type: object
+    properties:
+      title:
+        description: ''
+        example: Javascript, the good parts
+        type: string
+      body:
+        description: ''
+        example: Lorem Ipsum Dolor Sit Amet
+        type: string
+      deactivated:
+        description: ''
+        example: false
+        type: boolean
+      picture:
+        description: ''
+        example: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        type: string
+      taggedUsers:
+        description: ''
+        example:
+        - 5ab52232d28be4ca7d30a324
+        type: array
+        items:
+          type: string
+    required:
+    - title
+    - body
+    - deactivated
+    - picture
+    - taggedUsers
+  CreatePost:
+    title: create post
+    example:
+      success: true
+      response:
+        deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        _id: 5ab66d3c03f5314f4123906f
+        title: Javascript, the good parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-24T15:22:36.4780000Z
+        updatedDate: 2018-03-24T15:22:36.4780000Z
+        __v: 0
+    type: object
+    properties:
+      success:
+        description: ''
+        example: true
+        type: boolean
+      response:
+        $ref: '#/definitions/Response'
+    required:
+    - success
+    - response
+  UpdatePostrequest:
+    title: update postRequest
+    example:
+      deactivated: false
+      taggedUsers:
+      - 5ab52232d28be4ca7d30a324
+      title: Javascript, the good parts
+      body: Lorem Ipsum Dolor Sit Amet
+      picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+      creator: 5ab52232d28be4ca7d30a324
+    type: object
+    properties:
+      deactivated:
+        description: ''
+        example: false
+        type: boolean
+      taggedUsers:
+        description: ''
+        example:
+        - 5ab52232d28be4ca7d30a324
+        type: array
+        items:
+          type: string
+      title:
+        description: ''
+        example: Javascript, the good parts
+        type: string
+      body:
+        description: ''
+        example: Lorem Ipsum Dolor Sit Amet
+        type: string
+      picture:
+        description: ''
+        example: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        type: string
+      creator:
+        description: ''
+        example: 5ab52232d28be4ca7d30a324
+        type: string
+    required:
+    - deactivated
+    - taggedUsers
+    - title
+    - body
+    - picture
+    - creator
+  UpdatePost:
+    title: update post
+    example:
+      success: true
+      response:
+        deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        _id: 5ab53032633d761b496bc34c
+        title: Javascript, the good parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-23T16:49:54.4800000Z
+        updatedDate: 2018-03-24T15:22:20.7430000Z
+        __v: 0
+    type: object
+    properties:
+      success:
+        description: ''
+        example: true
+        type: boolean
+      response:
+        $ref: '#/definitions/Response'
+    required:
+    - success
+    - response
+  DeactivatePost:
+    title: deactivate post
+    example:
+      success: true
+      response:
+        deactivated: true
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        _id: 5ab53032633d761b496bc34c
+        title: Javascript, the good parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-23T16:49:54.4800000Z
+        updatedDate: 2018-03-24T15:22:16.8060000Z
+        __v: 0
+    type: object
+    properties:
+      success:
+        description: ''
+        example: true
+        type: boolean
+      response:
+        $ref: '#/definitions/Response'
+    required:
+    - success
+    - response
+  ActivatePost:
+    title: activate post
+    example:
+      success: true
+      response:
+        deactivated: false
+        taggedUsers:
+        - 5ab52232d28be4ca7d30a324
+        _id: 5ab53032633d761b496bc34c
+        title: Javascript, the good parts
+        body: Lorem Ipsum Dolor Sit Amet
+        picture: https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg
+        creator: 5ab52232d28be4ca7d30a324
+        createdDate: 2018-03-23T16:49:54.4800000Z
+        updatedDate: 2018-03-24T15:22:10.1200000Z
+        __v: 0
+    type: object
+    properties:
+      success:
+        description: ''
+        example: true
+        type: boolean
+      response:
+        $ref: '#/definitions/Response'
+    required:
+    - success
+    - response
+  GetUser:
+    title: get user
+    example:
+      success: true
+      response:
+      - login: emilioriosvz
+        id: 5558664
+        avatar_url: https://avatars0.githubusercontent.com/u/5558664?v=4
+        gravatar_id: ''
+        url: https://api.github.com/users/emilioriosvz
+        html_url: https://github.com/emilioriosvz
+        followers_url: https://api.github.com/users/emilioriosvz/followers
+        following_url: https://api.github.com/users/emilioriosvz/following{/other_user}
+        gists_url: https://api.github.com/users/emilioriosvz/gists{/gist_id}
+        starred_url: https://api.github.com/users/emilioriosvz/starred{/owner}{/repo}
+        subscriptions_url: https://api.github.com/users/emilioriosvz/subscriptions
+        organizations_url: https://api.github.com/users/emilioriosvz/orgs
+        repos_url: https://api.github.com/users/emilioriosvz/repos
+        events_url: https://api.github.com/users/emilioriosvz/events{/privacy}
+        received_events_url: https://api.github.com/users/emilioriosvz/received_events
+        type: User
+        site_admin: false
+        score: 31.932673000000001
+    type: object
+    properties:
+      success:
+        description: ''
+        example: true
+        type: boolean
+      response:
+        description: ''
+        example:
+        - login: emilioriosvz
+          id: 5558664
+          avatar_url: https://avatars0.githubusercontent.com/u/5558664?v=4
+          gravatar_id: ''
+          url: https://api.github.com/users/emilioriosvz
+          html_url: https://github.com/emilioriosvz
+          followers_url: https://api.github.com/users/emilioriosvz/followers
+          following_url: https://api.github.com/users/emilioriosvz/following{/other_user}
+          gists_url: https://api.github.com/users/emilioriosvz/gists{/gist_id}
+          starred_url: https://api.github.com/users/emilioriosvz/starred{/owner}{/repo}
+          subscriptions_url: https://api.github.com/users/emilioriosvz/subscriptions
+          organizations_url: https://api.github.com/users/emilioriosvz/orgs
+          repos_url: https://api.github.com/users/emilioriosvz/repos
+          events_url: https://api.github.com/users/emilioriosvz/events{/privacy}
+          received_events_url: https://api.github.com/users/emilioriosvz/received_events
+          type: User
+          site_admin: false
+          score: 31.932673000000001
+        type: array
+        items:
+          $ref: '#/definitions/Response19'
+    required:
+    - success
+    - response
+  Response19:
+    title: Response19
+    example:
+      login: emilioriosvz
+      id: 5558664
+      avatar_url: https://avatars0.githubusercontent.com/u/5558664?v=4
+      gravatar_id: ''
+      url: https://api.github.com/users/emilioriosvz
+      html_url: https://github.com/emilioriosvz
+      followers_url: https://api.github.com/users/emilioriosvz/followers
+      following_url: https://api.github.com/users/emilioriosvz/following{/other_user}
+      gists_url: https://api.github.com/users/emilioriosvz/gists{/gist_id}
+      starred_url: https://api.github.com/users/emilioriosvz/starred{/owner}{/repo}
+      subscriptions_url: https://api.github.com/users/emilioriosvz/subscriptions
+      organizations_url: https://api.github.com/users/emilioriosvz/orgs
+      repos_url: https://api.github.com/users/emilioriosvz/repos
+      events_url: https://api.github.com/users/emilioriosvz/events{/privacy}
+      received_events_url: https://api.github.com/users/emilioriosvz/received_events
+      type: User
+      site_admin: false
+      score: 31.932673000000001
+    type: object
+    properties:
+      login:
+        description: ''
+        example: emilioriosvz
+        type: string
+      id:
+        description: ''
+        example: 5558664
+        type: integer
+        format: int32
+      avatar_url:
+        description: ''
+        example: https://avatars0.githubusercontent.com/u/5558664?v=4
+        type: string
+      gravatar_id:
+        description: ''
+        type: string
+      url:
+        description: ''
+        example: https://api.github.com/users/emilioriosvz
+        type: string
+      html_url:
+        description: ''
+        example: https://github.com/emilioriosvz
+        type: string
+      followers_url:
+        description: ''
+        example: https://api.github.com/users/emilioriosvz/followers
+        type: string
+      following_url:
+        description: ''
+        example: https://api.github.com/users/emilioriosvz/following{/other_user}
+        type: string
+      gists_url:
+        description: ''
+        example: https://api.github.com/users/emilioriosvz/gists{/gist_id}
+        type: string
+      starred_url:
+        description: ''
+        example: https://api.github.com/users/emilioriosvz/starred{/owner}{/repo}
+        type: string
+      subscriptions_url:
+        description: ''
+        example: https://api.github.com/users/emilioriosvz/subscriptions
+        type: string
+      organizations_url:
+        description: ''
+        example: https://api.github.com/users/emilioriosvz/orgs
+        type: string
+      repos_url:
+        description: ''
+        example: https://api.github.com/users/emilioriosvz/repos
+        type: string
+      events_url:
+        description: ''
+        example: https://api.github.com/users/emilioriosvz/events{/privacy}
+        type: string
+      received_events_url:
+        description: ''
+        example: https://api.github.com/users/emilioriosvz/received_events
+        type: string
+      type:
+        description: ''
+        example: User
+        type: string
+      site_admin:
+        description: ''
+        example: false
+        type: boolean
+      score:
+        description: ''
+        example: 31.932673000000001
+        type: number
+        format: double
+    required:
+    - login
+    - id
+    - avatar_url
+    - gravatar_id
+    - url
+    - html_url
+    - followers_url
+    - following_url
+    - gists_url
+    - starred_url
+    - subscriptions_url
+    - organizations_url
+    - repos_url
+    - events_url
+    - received_events_url
+    - type
+    - site_admin
+    - score
